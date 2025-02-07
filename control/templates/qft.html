@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Quantum Fourier Transform</h1>
+        {% if state %}
+            <p> Your transformed state is {% for x in state %}{{ x }}, {% endfor %} </p>
+        {% elif error %}
+            <p> Invalid characters in bitstring! </p>
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            <label>Initial state:</label>
+            <input type="text" name="state" maxlength="6">
+            <input type="submit">
+        </form>
+        <a href="{% url 'homepage' %}">Home</a>
+    </body>
+</html>

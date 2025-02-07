@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Grover's Search Algorithm!</h1>
+
+        <p>
+            This page demonstrates the use of Grover's algorithm to find (with high probability) two binary strings
+            of three digits such that the sum of digits in the each string are equivalent. <br>
+            For instance, one valid solution to this problem are the strings '010' and '100'.
+        </p>
+
+        <p>
+            Your new solution is: {{ string_one }} and {{ string_two }}
+            <br>
+            This solution is <b> {{ validity }}</b>
+        </p>
+
+        <a href="{% url 'grover' %}">Generate new solution</a> <br>
+        <a href="{% url 'homepage' %}">Home</a>
+    </body>
+</html>

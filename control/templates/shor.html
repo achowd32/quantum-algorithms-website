@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Shor's Algorithm</h1>
+        <p> 
+            Performs one iteration of Shor's Algorithm, hard coded for factoring 15!
+            <br> Enter the a-value you would like to use to use in your factoring attempt. Your a value must be an integer in the range [2, 13].
+            <br> Leave the field blank for a random a-value. You can read up about the use of a-values in Shor's Algorithm here.
+        </p>
+        {% if display %}
+            {% if error %}
+                <p> Invalid a-value. </p>
+            {% elif not qpe_bool %}
+                <p> Your a-value was a factor, and quantum phase estimation was not required. The generated factors are {% for x in factors %}{{ x }}, {% endfor %}</p>
+            {% elif not r_val|divisibleby:2 %}
+                <p> The algorithm generated r = {{ r_val }}. Since this r-value is odd, the algorithm terminated and no factors were found.</p>
+            {% else %}
+                <p> Success! The algorithm generated r = {{ r_val }} with factors {% for x in factors %}{{ x }}, {% endfor %} </p>
+            {% endif %}
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            <label>A-value:</label>
+            <input type="text" name="a_val" maxlength="2">
+            <input type="submit">
+        </form>
+        <a href="{% url 'homepage' %}">Home</a>
+    </body>
+</html>
